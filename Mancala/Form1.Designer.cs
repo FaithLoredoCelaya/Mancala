@@ -91,51 +91,57 @@
             // 
             // p2Pocket6
             // 
-            this.p2Pocket6.Location = new System.Drawing.Point(304, 18);
+            this.p2Pocket6.Location = new System.Drawing.Point(74, 18);
             this.p2Pocket6.Name = "p2Pocket6";
             this.p2Pocket6.Size = new System.Drawing.Size(40, 37);
             this.p2Pocket6.TabIndex = 11;
             this.p2Pocket6.UseVisualStyleBackColor = true;
+            this.p2Pocket6.Click += new System.EventHandler(this.p2Pocket6_Click);
             // 
             // p2Pocket5
             // 
-            this.p2Pocket5.Location = new System.Drawing.Point(258, 18);
+            this.p2Pocket5.Location = new System.Drawing.Point(120, 18);
             this.p2Pocket5.Name = "p2Pocket5";
             this.p2Pocket5.Size = new System.Drawing.Size(40, 37);
             this.p2Pocket5.TabIndex = 10;
             this.p2Pocket5.UseVisualStyleBackColor = true;
+            this.p2Pocket5.Click += new System.EventHandler(this.p2Pocket5_Click);
             // 
             // p2Pocket4
             // 
-            this.p2Pocket4.Location = new System.Drawing.Point(212, 18);
+            this.p2Pocket4.Location = new System.Drawing.Point(166, 18);
             this.p2Pocket4.Name = "p2Pocket4";
             this.p2Pocket4.Size = new System.Drawing.Size(40, 37);
             this.p2Pocket4.TabIndex = 9;
             this.p2Pocket4.UseVisualStyleBackColor = true;
+            this.p2Pocket4.Click += new System.EventHandler(this.p2Pocket4_Click);
             // 
             // p2Pocket3
             // 
-            this.p2Pocket3.Location = new System.Drawing.Point(166, 18);
+            this.p2Pocket3.Location = new System.Drawing.Point(212, 18);
             this.p2Pocket3.Name = "p2Pocket3";
             this.p2Pocket3.Size = new System.Drawing.Size(40, 37);
             this.p2Pocket3.TabIndex = 8;
             this.p2Pocket3.UseVisualStyleBackColor = true;
+            this.p2Pocket3.Click += new System.EventHandler(this.p2Pocket3_Click);
             // 
             // p2Pocket2
             // 
-            this.p2Pocket2.Location = new System.Drawing.Point(120, 18);
+            this.p2Pocket2.Location = new System.Drawing.Point(258, 18);
             this.p2Pocket2.Name = "p2Pocket2";
             this.p2Pocket2.Size = new System.Drawing.Size(40, 37);
             this.p2Pocket2.TabIndex = 7;
             this.p2Pocket2.UseVisualStyleBackColor = true;
+            this.p2Pocket2.Click += new System.EventHandler(this.p2Pocket2_Click);
             // 
             // p2Pocket1
             // 
-            this.p2Pocket1.Location = new System.Drawing.Point(74, 18);
+            this.p2Pocket1.Location = new System.Drawing.Point(304, 18);
             this.p2Pocket1.Name = "p2Pocket1";
             this.p2Pocket1.Size = new System.Drawing.Size(40, 37);
             this.p2Pocket1.TabIndex = 6;
             this.p2Pocket1.UseVisualStyleBackColor = true;
+            this.p2Pocket1.Click += new System.EventHandler(this.p2Pocket1_Click);
             // 
             // p1Pocket6
             // 
@@ -144,6 +150,7 @@
             this.p1Pocket6.Size = new System.Drawing.Size(40, 37);
             this.p1Pocket6.TabIndex = 5;
             this.p1Pocket6.UseVisualStyleBackColor = true;
+            this.p1Pocket6.Click += new System.EventHandler(this.p1Pocket6_Click);
             // 
             // p1Pocket5
             // 
@@ -152,6 +159,7 @@
             this.p1Pocket5.Size = new System.Drawing.Size(40, 37);
             this.p1Pocket5.TabIndex = 4;
             this.p1Pocket5.UseVisualStyleBackColor = true;
+            this.p1Pocket5.Click += new System.EventHandler(this.p1Pocket5_Click);
             // 
             // p1Pocket4
             // 
@@ -160,6 +168,7 @@
             this.p1Pocket4.Size = new System.Drawing.Size(40, 37);
             this.p1Pocket4.TabIndex = 3;
             this.p1Pocket4.UseVisualStyleBackColor = true;
+            this.p1Pocket4.Click += new System.EventHandler(this.p1Pocket4_Click);
             // 
             // p1Pocket3
             // 
@@ -168,6 +177,7 @@
             this.p1Pocket3.Size = new System.Drawing.Size(40, 37);
             this.p1Pocket3.TabIndex = 2;
             this.p1Pocket3.UseVisualStyleBackColor = true;
+            this.p1Pocket3.Click += new System.EventHandler(this.p1Pocket3_Click);
             // 
             // p1Pocket2
             // 

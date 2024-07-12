@@ -45,9 +45,47 @@ namespace Mancala
             pockets= setBUp.getPocketScores();
             scorePocket = setBUp.getScorePockets();
             updateDispaly();
-           // setBUp.switchPlayer();
-            //Turn.Text = "Player Turn: 2";
+            setBUp.switchPlayer();
+            disableOtherPlayerMove();
+            Turn.Text = "Player Turn: 2";
 
+        }
+
+        public void disableOtherPlayerMove()
+        {
+            //disable the other players controls
+            if (setBUp.getPlayerTurn() == 0)
+            {
+                p1Pocket1.Enabled = true;
+                p1Pocket2.Enabled = true;
+                p1Pocket3.Enabled = true;
+                p1Pocket4.Enabled = true;
+                p1Pocket5.Enabled = true;
+                p1Pocket6.Enabled = true;
+
+                p2Pocket1.Enabled = false;
+                p2Pocket2.Enabled = false;
+                p2Pocket3.Enabled = false;
+                p2Pocket4.Enabled = false;
+                p2Pocket5.Enabled = false;
+                p2Pocket6.Enabled = false;
+            }
+            else if (setBUp.getPlayerTurn() == 1)
+            {
+                p2Pocket1.Enabled = true;
+                p2Pocket2.Enabled = true;
+                p2Pocket3.Enabled = true;
+                p2Pocket4.Enabled = true;
+                p2Pocket5.Enabled = true;
+                p2Pocket6.Enabled = true;
+
+                p1Pocket1.Enabled = false;
+                p1Pocket2.Enabled = false;
+                p1Pocket3.Enabled = false;
+                p1Pocket4.Enabled = false;
+                p1Pocket5.Enabled = false;
+                p1Pocket6.Enabled = false;
+            }
         }
 
         private void p1Pocket2_Click(object sender, EventArgs e)
@@ -56,8 +94,9 @@ namespace Mancala
             pockets = setBUp.getPocketScores();
             scorePocket = setBUp.getScorePockets();
             updateDispaly();
-         //   setBUp.switchPlayer();
-         //   Turn.Text = "Player Turn: 2";
+            setBUp.switchPlayer();
+            disableOtherPlayerMove();
+            Turn.Text = "Player Turn: 2";
         }
 
         private void StartNew_Click(object sender, EventArgs e)
@@ -84,6 +123,7 @@ namespace Mancala
             p2Pocket5.Text = pockets[10].ToString();
             p2Pocket6.Text = pockets[11].ToString();
             scoreP2.Text = scorePocket[1].ToString();
+
         }
         private void ResetGame(BoardSetUp setUp)
         {
@@ -94,6 +134,114 @@ namespace Mancala
             updateDispaly();
         }
 
+        private void p1Pocket3_Click(object sender, EventArgs e)
+        {
+            setBUp.updateValues(2, 0);
+            pockets = setBUp.getPocketScores();
+            scorePocket = setBUp.getScorePockets();
+            updateDispaly();
+            setBUp.switchPlayer();
+            disableOtherPlayerMove();
+            Turn.Text = "Player Turn: 2";
+        }
 
+        private void p1Pocket4_Click(object sender, EventArgs e)
+        {
+            setBUp.updateValues(3, 0);
+            pockets = setBUp.getPocketScores();
+            scorePocket = setBUp.getScorePockets();
+            updateDispaly();
+            setBUp.switchPlayer();
+            disableOtherPlayerMove();
+            Turn.Text = "Player Turn: 2";
+        }
+
+        private void p1Pocket5_Click(object sender, EventArgs e)
+        {
+            setBUp.updateValues(4, 0);
+            pockets = setBUp.getPocketScores();
+            scorePocket = setBUp.getScorePockets();
+            updateDispaly();
+            setBUp.switchPlayer();
+            disableOtherPlayerMove();
+            Turn.Text = "Player Turn: 2";
+        }
+
+        private void p1Pocket6_Click(object sender, EventArgs e)
+        {
+            setBUp.updateValues(11, 0);
+            pockets = setBUp.getPocketScores();
+            scorePocket = setBUp.getScorePockets();
+            updateDispaly();
+            setBUp.switchPlayer();
+            disableOtherPlayerMove();
+            Turn.Text = "Player Turn: 2";
+        }
+
+        private void p2Pocket1_Click(object sender, EventArgs e)
+        {
+            setBUp.updateValues(10, 1);
+            pockets = setBUp.getPocketScores();
+            scorePocket = setBUp.getScorePockets();
+            updateDispaly();
+            setBUp.switchPlayer();
+            disableOtherPlayerMove();
+            Turn.Text = "Player Turn: 1";
+        }
+
+        private void p2Pocket2_Click(object sender, EventArgs e)
+        {
+            setBUp.updateValues(9, 1);
+            pockets = setBUp.getPocketScores();
+            scorePocket = setBUp.getScorePockets();
+            updateDispaly();
+            setBUp.switchPlayer();
+            disableOtherPlayerMove();
+            Turn.Text = "Player Turn: 1";
+        }
+
+        private void p2Pocket3_Click(object sender, EventArgs e)
+        {
+            setBUp.updateValues(8, 1);
+            pockets = setBUp.getPocketScores();
+            scorePocket = setBUp.getScorePockets();
+            updateDispaly();
+            setBUp.switchPlayer();
+            disableOtherPlayerMove();
+            Turn.Text = "Player Turn: 1";
+        }
+
+        private void p2Pocket4_Click(object sender, EventArgs e)
+        {
+            setBUp.updateValues(7, 1);
+            pockets = setBUp.getPocketScores();
+            scorePocket = setBUp.getScorePockets();
+            updateDispaly();
+            setBUp.switchPlayer();
+            disableOtherPlayerMove();
+            Turn.Text = "Player Turn: 1";
+        }
+
+        private void p2Pocket5_Click(object sender, EventArgs e)
+        {
+            setBUp.updateValues(6, 1);
+            pockets = setBUp.getPocketScores();
+            scorePocket = setBUp.getScorePockets();
+            updateDispaly();
+            setBUp.switchPlayer();
+            disableOtherPlayerMove();
+            Turn.Text = "Player Turn: 1";
+        }
+
+        private void p2Pocket6_Click(object sender, EventArgs e)
+        {
+            setBUp.updateValues(5, 1);
+            pockets = setBUp.getPocketScores();
+            scorePocket = setBUp.getScorePockets();
+            updateDispaly();
+            setBUp.switchPlayer();
+            disableOtherPlayerMove();
+            Turn.Text = "Player Turn: 1";
+        }
     }
 }

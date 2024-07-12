@@ -17,6 +17,10 @@ namespace Mancala.Classes
         int[] pocket = new int[12];
         int[] scorePocket = new int[2];
 
+        public int getPlayerTurn()
+        {
+            return playerTurn;
+        }
 
         public int[] getPocketScores()
         {
@@ -79,30 +83,56 @@ namespace Mancala.Classes
             int counter = intial;
             //empty the initial pocket
             pocket[intial] = 0;
-            //move to the next pocket
-            counter++;
-            for (int i = 0; i <toMove; i++)
+            
+            if (turn == 0)
             {
-                //Check if the pocket is a score pocket
-                if (counter == 6 || counter == 11)
-                {
-                    //Add score if it is
-                    scorePocket[turn]++;
-                }
-                else
-                {
-                    //Else just add one to the next pocket
-                    pocket[counter] = pocket[counter]+1;
-                }
-
+                //move to the next pocket
                 counter++;
-                
-                //if the counter is more than the avialble pockets. reset to zero to loop around
-                if(counter==12)
+                for (int i = 0; i < toMove; i++)
                 {
-                    counter = 0;
-                }
+                    //Check if the pocket is a score pocket
+                    if (counter == 6)
+                    {
+                        //Add score if it is
+                        scorePocket[turn]++;
+                    }
+                    else
+                    {
+                        //Else just add one to the next pocket
+                        pocket[counter] = pocket[counter] + 1;
+                    }
 
+                    counter++;
+
+
+                }
+            } else if(turn==1)
+            {
+                //move to the next pocket
+                counter++;
+                for (int i = 0; i < toMove; i++)
+                {
+                    //Check if the pocket is a score pocket
+                    if (counter == 12)
+                    {
+                        //Add score if it is
+                        scorePocket[turn]++;
+                    }
+                    else
+                    {
+                        //Else just add one to the next pocket
+                        pocket[counter] = pocket[counter] + 1;
+                    }
+
+                    counter++;
+
+                    //if the counter is more than the avialble pockets. reset to zero to loop around
+                    if (counter == 13)
+                    {
+                        counter = 0;
+                    }
+
+                }
             }
         }
     }
