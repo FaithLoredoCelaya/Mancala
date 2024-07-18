@@ -18,8 +18,10 @@ namespace Mancala
         public BoardSetUp setBUp = new BoardSetUp();
 
         //Have local copy facilitate data transfer
-        int[] pockets = new int[12];
-        int[] scorePocket = new int[2];
+        private int[] pockets = new int[12];
+        private int[] scorePocket = new int[2];
+
+        private int flag = 0;
 
         public Form1()
         {
@@ -27,6 +29,49 @@ namespace Mancala
             setBUp.fillCup();
             updateDispaly();
             Turn.Text = "Player Turn: 1";
+        }
+
+        private int victoryCheck()
+        {
+            bool victory = false;
+            for (int i = 0; i <= 5; i++)
+            {
+                if (pockets[i] == 0)
+                {
+                    victory = true;
+                }
+                else
+                {
+                    victory = false;
+                }
+            }
+            if(victory==true)
+            {
+                //Player 1 Wins
+                return 1;
+            }
+
+            for (int i = 5; i <= 12; i++)
+            {
+                if (pockets[i] == 0)
+                {
+                    victory = true;
+                }
+                else
+                {
+                    victory = false;
+                }
+            }
+            if (victory == true)
+            {
+                //Player 2 Wins
+                return 2;
+            }
+            else
+            {
+                //Nobody has won
+                return 0;
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -41,13 +86,16 @@ namespace Mancala
 
         private void p1Pocket1_Click(object sender, EventArgs e)
         {
-            setBUp.updateValues(0,0);
+            flag = setBUp.updateValues(0,0);
             pockets= setBUp.getPocketScores();
             scorePocket = setBUp.getScorePockets();
             updateDispaly();
-            setBUp.switchPlayer();
-            disableOtherPlayerMove();
-            Turn.Text = "Player Turn: 2";
+            if (flag == 0)
+            {
+                setBUp.switchPlayer();
+                disableOtherPlayerMove();
+                Turn.Text = "Player Turn: 2";
+            }
 
         }
 
@@ -90,13 +138,16 @@ namespace Mancala
 
         private void p1Pocket2_Click(object sender, EventArgs e)
         {
-            setBUp.updateValues(1, 0);
+            flag = setBUp.updateValues(1, 0);
             pockets = setBUp.getPocketScores();
             scorePocket = setBUp.getScorePockets();
             updateDispaly();
-            setBUp.switchPlayer();
-            disableOtherPlayerMove();
-            Turn.Text = "Player Turn: 2";
+            if (flag == 0)
+            {
+                setBUp.switchPlayer();
+                disableOtherPlayerMove();
+                Turn.Text = "Player Turn: 2";
+            }
         }
 
         private void StartNew_Click(object sender, EventArgs e)
@@ -124,11 +175,27 @@ namespace Mancala
             p2Pocket6.Text = pockets[11].ToString();
             scoreP2.Text = scorePocket[1].ToString();
 
+            if (victoryCheck() == 1)
+            {
+                Turn.Text = "Player 1 won!";
+            }
+            else if (victoryCheck() ==2 )
+            {
+                Turn.Text = "Player 2 won!";
+            }
+
+
         }
         private void ResetGame(BoardSetUp setUp)
         {
             //Resets board and fills pockets with peebles
             setBUp.resetGame();
+            if (setBUp.getPlayerTurn() != 0)
+            {
+                setBUp.switchPlayer();
+                disableOtherPlayerMove();
+                Turn.Text = "Player Turn: 1";
+            }
             pockets= setBUp.getPocketScores();
             scorePocket = setBUp.getScorePockets();
             updateDispaly();
@@ -136,112 +203,142 @@ namespace Mancala
 
         private void p1Pocket3_Click(object sender, EventArgs e)
         {
-            setBUp.updateValues(2, 0);
+            flag = setBUp.updateValues(2, 0);
             pockets = setBUp.getPocketScores();
             scorePocket = setBUp.getScorePockets();
             updateDispaly();
-            setBUp.switchPlayer();
-            disableOtherPlayerMove();
-            Turn.Text = "Player Turn: 2";
+            if (flag == 0)
+            {
+                setBUp.switchPlayer();
+                disableOtherPlayerMove();
+                Turn.Text = "Player Turn: 2";
+            }
         }
 
         private void p1Pocket4_Click(object sender, EventArgs e)
         {
-            setBUp.updateValues(3, 0);
+            flag = setBUp.updateValues(3, 0);
             pockets = setBUp.getPocketScores();
             scorePocket = setBUp.getScorePockets();
             updateDispaly();
-            setBUp.switchPlayer();
-            disableOtherPlayerMove();
-            Turn.Text = "Player Turn: 2";
+            if (flag == 0)
+            {
+                setBUp.switchPlayer();
+                disableOtherPlayerMove();
+                Turn.Text = "Player Turn: 2";
+            }
         }
 
         private void p1Pocket5_Click(object sender, EventArgs e)
         {
-            setBUp.updateValues(4, 0);
+            flag = setBUp.updateValues(4, 0);
             pockets = setBUp.getPocketScores();
             scorePocket = setBUp.getScorePockets();
             updateDispaly();
-            setBUp.switchPlayer();
-            disableOtherPlayerMove();
-            Turn.Text = "Player Turn: 2";
+            if (flag == 0)
+            {
+                setBUp.switchPlayer();
+                disableOtherPlayerMove();
+                Turn.Text = "Player Turn: 2";
+            }
         }
 
         private void p1Pocket6_Click(object sender, EventArgs e)
         {
-            setBUp.updateValues(11, 0);
+            flag = setBUp.updateValues(5, 0);
             pockets = setBUp.getPocketScores();
             scorePocket = setBUp.getScorePockets();
             updateDispaly();
-            setBUp.switchPlayer();
-            disableOtherPlayerMove();
-            Turn.Text = "Player Turn: 2";
+            if (flag == 0)
+            {
+                setBUp.switchPlayer();
+                disableOtherPlayerMove();
+                Turn.Text = "Player Turn: 2";
+            }
         }
 
         private void p2Pocket1_Click(object sender, EventArgs e)
         {
-            setBUp.updateValues(10, 1);
+            flag = setBUp.updateValues(6, 1);
             pockets = setBUp.getPocketScores();
             scorePocket = setBUp.getScorePockets();
             updateDispaly();
-            setBUp.switchPlayer();
-            disableOtherPlayerMove();
-            Turn.Text = "Player Turn: 1";
+            if (flag == 0)
+            {
+                setBUp.switchPlayer();
+                disableOtherPlayerMove();
+                Turn.Text = "Player Turn: 1";
+            }
         }
 
         private void p2Pocket2_Click(object sender, EventArgs e)
         {
-            setBUp.updateValues(9, 1);
+            flag = setBUp.updateValues(7, 1);
             pockets = setBUp.getPocketScores();
             scorePocket = setBUp.getScorePockets();
             updateDispaly();
-            setBUp.switchPlayer();
-            disableOtherPlayerMove();
-            Turn.Text = "Player Turn: 1";
+            if (flag == 0)
+            {
+                setBUp.switchPlayer();
+                disableOtherPlayerMove();
+                Turn.Text = "Player Turn: 1";
+            }
         }
 
         private void p2Pocket3_Click(object sender, EventArgs e)
         {
-            setBUp.updateValues(8, 1);
+            flag = setBUp.updateValues(8, 1);
             pockets = setBUp.getPocketScores();
             scorePocket = setBUp.getScorePockets();
             updateDispaly();
-            setBUp.switchPlayer();
-            disableOtherPlayerMove();
-            Turn.Text = "Player Turn: 1";
+            if (flag == 0)
+            {
+                setBUp.switchPlayer();
+                disableOtherPlayerMove();
+                Turn.Text = "Player Turn: 1";
+            }
         }
 
         private void p2Pocket4_Click(object sender, EventArgs e)
         {
-            setBUp.updateValues(7, 1);
+            flag = setBUp.updateValues(9, 1);
             pockets = setBUp.getPocketScores();
             scorePocket = setBUp.getScorePockets();
             updateDispaly();
-            setBUp.switchPlayer();
-            disableOtherPlayerMove();
-            Turn.Text = "Player Turn: 1";
+            if (flag == 0)
+            {
+                setBUp.switchPlayer();
+                disableOtherPlayerMove();
+                Turn.Text = "Player Turn: 1";
+            }
         }
 
         private void p2Pocket5_Click(object sender, EventArgs e)
         {
-            setBUp.updateValues(6, 1);
+            flag = setBUp.updateValues(10, 1);
             pockets = setBUp.getPocketScores();
             scorePocket = setBUp.getScorePockets();
             updateDispaly();
-            setBUp.switchPlayer();
-            disableOtherPlayerMove();
-            Turn.Text = "Player Turn: 1";
+            if (flag == 0)
+            {
+                setBUp.switchPlayer();
+                disableOtherPlayerMove();
+                Turn.Text = "Player Turn: 1";
+            }
         }
 
         private void p2Pocket6_Click(object sender, EventArgs e)
         {
-            setBUp.updateValues(5, 1);
+            flag = setBUp.updateValues(11, 1);
             pockets = setBUp.getPocketScores();
             scorePocket = setBUp.getScorePockets();
             updateDispaly();
-            setBUp.switchPlayer();
-            disableOtherPlayerMove();
-            Turn.Text = "Player Turn: 1";
+            if (flag == 0)
+            {
+                setBUp.switchPlayer();
+                disableOtherPlayerMove();
+                Turn.Text = "Player Turn: 1";
+            }
         }
     }
 }

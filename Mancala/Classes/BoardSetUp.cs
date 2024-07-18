@@ -14,7 +14,7 @@ namespace Mancala.Classes
 
         public int peeblePerCup = 4;
         int playerTurn = 0;
-        int[] pocket = new int[12];
+        int[] pocket = new int[13];
         int[] scorePocket = new int[2];
 
         public int getPlayerTurn()
@@ -75,7 +75,7 @@ namespace Mancala.Classes
 
 
         //Updates the pockets. moving the pebbles one at at time to the next pocket just like in the real game.
-        public void  updateValues(int intial,int turn)
+        public int  updateValues(int intial,int turn)
         {
             //set up the number of pebbles we need to move
             int toMove = pocket[intial];
@@ -83,57 +83,94 @@ namespace Mancala.Classes
             int counter = intial;
             //empty the initial pocket
             pocket[intial] = 0;
+
             
             if (turn == 0)
             {
-                //move to the next pocket
-                counter++;
-                for (int i = 0; i < toMove; i++)
+                for (int i = 1; i <= toMove; i++)
                 {
+                    //move to the next pocket
+                    counter++;
+                    //Check if you can steal
+                    if (counter > -1 && counter < 6)
+                    {
+                        if (i == toMove && pocket[counter] == 0)
+                        {
+                            scorePocket[turn] = scorePocket[turn] + pocket[counter + 5];
+                            pocket[counter + 5] = 0;
+                        }
+                    }
                     //Check if the pocket is a score pocket
                     if (counter == 6)
                     {
                         //Add score if it is
                         scorePocket[turn]++;
-                    }
-                    else
-                    {
-                        //Else just add one to the next pocket
-                        pocket[counter] = pocket[counter] + 1;
+                        i++;
                     }
 
-                    counter++;
+                    //Else just add one to the next pocket
+                    pocket[counter] = pocket[counter] + 1;
+
+
+
+                    if (counter == 6)
+                    {
+                        //Check if user gets a new turn
+                        if (i >= toMove)
+                        {
+                            return 1;
+                        }
+                    }
 
 
                 }
             } else if(turn==1)
             {
-                //move to the next pocket
-                counter++;
-                for (int i = 0; i < toMove; i++)
+                for (int i = 1; i <= toMove; i++)
                 {
+                    //move to the next pocket
+                    counter++;
+                    //Check if you can steal
+                    if (counter < 12)
+                    {
+                        if (counter > 5)
+                        {
+                            if (i == toMove && pocket[counter] == 0)
+                            {
+                                scorePocket[turn] = scorePocket[turn] + pocket[counter - 5];
+                                pocket[counter - 5] = 0;
+                            }
+                        }
+                    }
                     //Check if the pocket is a score pocket
                     if (counter == 12)
                     {
                         //Add score if it is
                         scorePocket[turn]++;
-                    }
-                    else
-                    {
-                        //Else just add one to the next pocket
-                        pocket[counter] = pocket[counter] + 1;
+                        i++;
                     }
 
-                    counter++;
+                    //Else just add one to the next pocket
+                    pocket[counter] = pocket[counter] + 1;
+
 
                     //if the counter is more than the avialble pockets. reset to zero to loop around
-                    if (counter == 13)
+                    if (counter == 12)
                     {
                         counter = 0;
+
+                        //Check if user gets a new turn
+                        if (i>= toMove)
+                        {
+                            counter = 0;
+                            return 1;
+                        }
                     }
 
                 }
             }
+            counter = 0;
+            return 0;
         }
     }
 
