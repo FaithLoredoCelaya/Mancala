@@ -129,11 +129,19 @@ namespace Mancala.Classes
                         if (i == toMove && pocket[counter] == 0)
                         {
                             calculator = getOpposite(counter);
-                            scorePocket[0] = scorePocket[0] + pocket[calculator];
-                            pocket[calculator] = 0;
-                            pocket[counter] = 0;
-                            return 0;
+                            if (pocket[calculator] != 0)
+                            {
+                                scorePocket[0] = scorePocket[0] + pocket[calculator];
+                                pocket[calculator] = 0;
+                                pocket[counter] = 0;
+                                return 0;
+                            }
+                            else
+                            {
+                                break;
+                            }
                         }
+
                     }
                     //Check if the pocket is a score pocket
                     if (counter == 6)
@@ -173,10 +181,17 @@ namespace Mancala.Classes
                             if (i == toMove && pocket[counter] == 0)
                             {
                                 calculator = getOpposite(counter);
-                                scorePocket[1] = scorePocket[1] + pocket[calculator];
-                                pocket[calculator] = 0;
-                                pocket[counter] = 0;
-                                return 0;
+                                if (pocket[calculator] != 0)
+                                {
+                                    scorePocket[1] = scorePocket[1] + pocket[calculator];
+                                    pocket[calculator] = 0;
+                                    pocket[counter] = 0;
+                                    return 0;
+                                }
+                                else
+                                {
+                                    break;
+                                }
                             }
                         }
                     }
@@ -200,6 +215,10 @@ namespace Mancala.Classes
                         { 
                             counter = -1;
                             return 1;
+                        }
+                        else if(i> toMove)
+                        {
+                            // do nothing
                         }
 
                         //This is after so the pieces can move before the counter gets reset
