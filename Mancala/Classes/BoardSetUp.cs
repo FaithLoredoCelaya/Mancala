@@ -14,7 +14,7 @@ namespace Mancala.Classes
 
         public int peeblePerCup = 4;
         int playerTurn = 0;
-        int[] pocket = new int[13];
+        int[] pocket = new int[14];
         int[] scorePocket = new int[2];
 
         public int getPlayerTurn()
@@ -73,6 +73,37 @@ namespace Mancala.Classes
             }
         }
 
+        //obtain pocket number across the field
+        public int getOpposite(int counter)
+        {
+            if (counter==0)
+                return 11;
+            else if (counter==1)
+                return 10;
+            else if (counter == 2)
+                return 9;
+            else if (counter == 3)
+                return 8;
+            else if (counter == 4)
+                return 7;
+            else if (counter == 5)
+                return 6;
+            else if (counter == 6)
+                return 5;
+            else if (counter == 7)
+                return 4;
+            else if (counter == 8)
+                return 3;
+            else if (counter == 9)
+                return 2;
+            else if (counter == 10)
+                return 1;
+            else if (counter == 11)
+                return 0;
+            else
+                return -1;
+            
+        }
 
         //Updates the pockets. moving the pebbles one at at time to the next pocket just like in the real game.
         public int  updateValues(int intial,int turn)
@@ -83,7 +114,8 @@ namespace Mancala.Classes
             int counter = intial;
             //empty the initial pocket
             pocket[intial] = 0;
-
+            //operator
+            int calculator = 0;
             
             if (turn == 0)
             {
@@ -96,8 +128,11 @@ namespace Mancala.Classes
                     {
                         if (i == toMove && pocket[counter] == 0)
                         {
-                            scorePocket[turn] = scorePocket[turn] + pocket[counter + 5];
-                            pocket[counter + 5] = 0;
+                            calculator = getOpposite(counter);
+                            scorePocket[0] = scorePocket[0] + pocket[calculator];
+                            pocket[calculator] = 0;
+                            pocket[counter] = 0;
+                            return 0;
                         }
                     }
                     //Check if the pocket is a score pocket
@@ -113,7 +148,7 @@ namespace Mancala.Classes
 
 
 
-                    if (counter == 6)
+                    if (counter == 5)
                     {
                         //Check if user gets a new turn
                         if (i >= toMove)
@@ -133,12 +168,15 @@ namespace Mancala.Classes
                     //Check if you can steal
                     if (counter < 12)
                     {
-                        if (counter > 5)
+                        if (counter > 6)
                         {
                             if (i == toMove && pocket[counter] == 0)
                             {
-                                scorePocket[turn] = scorePocket[turn] + pocket[counter - 5];
-                                pocket[counter - 5] = 0;
+                                calculator = getOpposite(counter);
+                                scorePocket[1] = scorePocket[1] + pocket[calculator];
+                                pocket[calculator] = 0;
+                                pocket[counter] = 0;
+                                return 0;
                             }
                         }
                     }
@@ -155,16 +193,18 @@ namespace Mancala.Classes
 
 
                     //if the counter is more than the avialble pockets. reset to zero to loop around
-                    if (counter == 12)
+                    if (counter >= 12)
                     {
-                        counter = 0;
-
                         //Check if user gets a new turn
-                        if (i>= toMove)
-                        {
-                            counter = 0;
+                        if (i >= toMove)
+                        { 
+                            counter = -1;
                             return 1;
                         }
+
+                        //This is after so the pieces can move before the counter gets reset
+                        counter = -1;
+
                     }
 
                 }
